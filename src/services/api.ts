@@ -1,7 +1,8 @@
 import axios from 'axios'
-
+import jsonpAdapter from 'axios-jsonp'
 const api = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com/'
+  adapter: jsonpAdapter,
+  baseURL: 'https://receitaws.com.br/v1/cnpj/'
 })
 
 export default api
