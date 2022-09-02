@@ -29,9 +29,9 @@ function findCnpjList(cnpjList){
 
   var interval = setInterval(()=>{
 
-    if(!!cnpjList[i]){ getCnpj(cnpjList[i]) }
-    if(!!cnpjList[i+1]){ getCnpj(cnpjList[i+1]) }
-    if(!!cnpjList[i+2]){ getCnpj(cnpjList[i+2]) }
+    if(!!cnpjList[i]){ getCnpj(cnpjList[i].padStart(14, "0")) }
+    if(!!cnpjList[i+1]){ getCnpj(cnpjList[i+1].padStart(14, "0")) }
+    if(!!cnpjList[i+2]){ getCnpj(cnpjList[i+2].padStart(14, "0")) }
 
     i = i+3;
     total = total-3
@@ -52,7 +52,6 @@ function showTotal(total) {
 }
 
 function populate(data) {
-  console.log("populate",data)
   const inputEmpresa = empresa
                           .replace('{{cnpj}}',data.cnpj)
                           .replace('{{nome}}',data.nome)
@@ -63,7 +62,7 @@ function populate(data) {
                           .replace('{{logradouro}}',data.logradouro)
                           .replace('{{numero}}',data.numero)
                           .replace('{{complemento}}',(data.complemento||'-'))
-                          .replace('{{cep}}',data.cep)
+                          .replace('{{cep}}',data.cep.replace('.', ""))
                           .replace('{{bairro}}',data.bairro)
                           .replace('{{municipio}}',data.municipio)
                           .replace('{{uf}}',data.uf)
